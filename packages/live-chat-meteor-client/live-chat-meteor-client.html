@@ -2,7 +2,8 @@
     <div id="live-chat-box" class="live-chat-box js-chat-box">
         <div id="live-chat-box-header" class="live-chat-box-header js-chat-box-close">
             <div class="live-chat-header-title">
-                Live Chat Demo
+                            <img src="http://singulogic.com/landing/wp-content/uploads/2018/01/logo_header.svg" class="logo-img" alt="Kallyas Gigantic Premium Template">
+
             </div>
         </div>
         <div id="live-chat-messages" class="live-chat-messages js-chat-messages">
@@ -12,6 +13,55 @@
                 </div>
             {{/each}}
         </div>
-        <textarea id="live-chat-submit-input" class="live-chat-submit-input js-chat-submit-input" rows="1" placeholder="Add new message..."></textarea>
+        <textarea id="live-chat-submit-input" class="live-chat-submit-input js-chat-submit-input" rows="1" placeholder="Escribe tu pregunta aquí..." autofocus></textarea>
     </div>
+</template>
+
+<template name="liveChatBoxTest">
+    <!-- start live chat -->
+    <div id="live-chat" style="z-index: 999;">
+    
+        <header class="clearfix chat-header">
+    
+            <!-- <a href="#" class="chat-close">x</a> -->
+    
+            <h4>Singulogic Bot</h4>
+    
+            <!-- <span class="chat-message-counter">3</span> -->
+    
+        </header>
+    
+    
+        <div class="chat">
+    
+            <div class="chat-history">
+                {{#each liveChatMessages}}
+                    <div class="chat-message clearfix">
+                    
+                        <!-- <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32"> -->
+                    
+                        <div class="chat-message-content clearfix">
+                    
+                            <span class="chat-time">13:35</span>
+                    
+                            <!-- <h5>John Doe</h5> -->
+                    
+                            <p>{{msg}}</p>
+                    
+                        </div>
+                        <!-- end chat-message-content -->
+                    
+                    </div>
+                    <!-- end chat-message -->
+                    <hr>
+                {{/each}}
+            <!-- <p class="chat-feedback">Singulogic Bot esta escribiendo</p> -->
+        <textarea id="live-chat-submit-input" class="live-chat-submit-input js-chat-submit-input" rows="1" placeholder="Escribí tu pregunta ..."></textarea>
+                    
+            </div>
+        </div>
+        <!-- end chat -->
+    
+    </div>
+    <!-- end live-chat -->
 </template>
