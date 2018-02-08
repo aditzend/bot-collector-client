@@ -1,4 +1,9 @@
 
+// Meteor.setTimeout(function() {
+//     liveChat.ddp.call('testEcho', "FROM CLIENT OKALIS");
+// }, 1000);
+
+
 Template.liveChatBox.onCreated(function () {
     this.liveChatMessages = new ReactiveVar(null);
 });
@@ -25,7 +30,8 @@ Template.liveChatBox.events({
         if (key === 13 && !e.shiftKey) {
             e.preventDefault();
             if (msg.trim() !== '') {
-                liveChat.ddp.call('addChatMessage', msg, clientAppId, userSessionId);
+                liveChat.connection.send(msg);
+                liveChat.ddp.call('respondSame', msg, clientAppId, userSessionId);
                 $(e.currentTarget).val('');
             }
         }
