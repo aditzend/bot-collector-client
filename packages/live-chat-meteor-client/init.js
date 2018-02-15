@@ -1,7 +1,8 @@
 liveChat = {
     init(clientAppId) {
         let self = this;
-        const endpoint = 'https://live-chat-singulogic-host.herokuapp.com';
+        const endpoint = 'localhost:3000';
+        // const endpoint = 'https://live-chat-singulogic-host.herokuapp.com';
         this.userSessionId = Random.id();
         this.clientAppId = clientAppId;
         this.ddp = DDP.connect(endpoint);

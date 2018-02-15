@@ -30,8 +30,9 @@ Template.liveChatBox.events({
         if (key === 13 && !e.shiftKey) {
             e.preventDefault();
             if (msg.trim() !== '') {
-                liveChat.connection.send(msg);
-                liveChat.ddp.call('respondSame', msg, clientAppId, userSessionId);
+                // liveChat.connection.send(msg);
+                liveChat.ddp.call('addIncomingMsg', userSessionId, clientAppId, userSessionId);
+                // liveChat.ddp.call('testEcho', msg, clientAppId, userSessionId);
                 $(e.currentTarget).val('');
             }
         }
