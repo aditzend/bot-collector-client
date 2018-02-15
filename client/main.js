@@ -4,7 +4,7 @@ import { liveChat } from 'meteor/live-chat-meteor-client';
 
 import './main.html';
 // import './css/custom.css';
-CLIENT_APP_ID = '2f8LsWvyESvWHJJ5S';
+CLIENT_APP_ID = 'dbeuHNtMJTsu8wvsN';
 liveChat.init(CLIENT_APP_ID);
 
 console.log('livechat', liveChat.userSessionId);
