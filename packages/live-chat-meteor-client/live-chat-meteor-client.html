@@ -6,12 +6,52 @@
 
             </div>
         </div>
-        <div id="live-chat-messages" class="live-chat-messages js-chat-messages">
-            {{#each liveChatMessages}}
-                <div class="live-chat-message-item">
-                    <div class="message">{{msg}}</div>
+<div style="overflow:auto" id="live-chat-messages" class="live-chat-messages js-chat-messages">
+<div class="live-chat-message-item">
+    <div class="message" id="msg-1">
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+    </div>
+</div>
+    
+    {{#each liveChatMessages}}
+                <div  class="live-chat-message-item">
+                    <div class="message" id="msg-1">{{msg}}</div>
                 </div>
             {{/each}}
+            <div id="chat-end"></div>
         </div>
         <textarea id="live-chat-submit-input" class="live-chat-submit-input js-chat-submit-input" rows="1" placeholder="Escribe tu pregunta aquí..." autofocus></textarea>
     </div>
@@ -42,7 +82,7 @@
                     
                         <div class="chat-message-content clearfix">
                     
-                            <span class="chat-time">13:35</span>
+                            <!-- <span class="chat-time">13:35</span> -->
                     
                             <!-- <h5>John Doe</h5> -->
                     
