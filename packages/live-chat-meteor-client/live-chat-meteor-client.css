@@ -71,13 +71,16 @@
     padding: 5px 8px 4px;
     max-width: 80%;
     width: auto;
-    background-color: #fff;
-    color: #424242;
+    background-color: #737373;
+    color: #fff;
 }
 .live-chat-message-item .message {
     float: left;
 }
 .live-chat-message-item-client .message {
+    background-color: #d1131a;
+    color: white;   
+    
     float: right;
 }
 

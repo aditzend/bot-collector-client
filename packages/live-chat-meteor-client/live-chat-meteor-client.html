@@ -2,17 +2,28 @@
     <div id="live-chat-box" class="live-chat-box js-chat-box">
         <div id="live-chat-box-header" class="live-chat-box-header js-chat-box-close">
             <div class="live-chat-header-title">
-                            <img src="http://singulogic.com/landing/wp-content/uploads/2018/01/logo_header.svg" class="logo-img" alt="Kallyas Gigantic Premium Template">
-
+                            <img src="https://mitrol.net/sites/default/files/logo_mit_0.png" class="logo-img" alt="Mitra" width="30px">
             </div>
         </div>
-<div style="overflow:auto" id="live-chat-messages" class="live-chat-messages js-chat-messages">
-
-    
-    {{#each liveChatMessages}}
-                <div  class="live-chat-message-item">
-                    <div class="message" id="msg-1">{{msg}}</div>
-                </div>
+        <div style="overflow:auto" id="live-chat-messages" class="live-chat-messages js-chat-messages">
+            <h5>Mitra</h5>
+            <div class="live-chat-message-item">
+                <div class="message" id="msg-1">Hola! Soy Mitra, cómo puedo ayudarle?</div>
+            </div>
+            {{#each m in liveChatMessages}}
+                {{#if isClient m}}
+                    <div class="live-chat-message-item live-chat-message-item-client">
+                        <div class="message" id="msg-1">{{m.msg}}</div>
+                    </div>
+                {{else}}
+                    <!-- <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32"> -->
+                        <!-- <span class="chat-time">{{m.date}}</span> -->
+                        <h5>Mitra</h5>
+                        <div class="live-chat-message-item">
+                            <div class="message" id="msg-1">{{m.msg}}</div>
+                        </div>
+                <!-- end chat-message -->
+                {{/if}}
             {{/each}}
             <div id="chat-end"></div>
         </div>
@@ -41,13 +52,13 @@
                 {{#each liveChatMessages}}
                     <div class="chat-message clearfix">
                     
-                        <!-- <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32"> -->
+                        <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32">
                     
                         <div class="chat-message-content clearfix">
                     
-                            <!-- <span class="chat-time">13:35</span> -->
+                            <span class="chat-time">13:35</span>
                     
-                            <!-- <h5>John Doe</h5> -->
+                            <h5>John Doe</h5>
                     
                             <p>{{msg}}</p>
                     

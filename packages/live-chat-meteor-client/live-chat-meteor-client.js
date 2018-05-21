@@ -11,7 +11,10 @@ Template.liveChatBox.onRendered(function () {
     const data = Template.currentData();
     const userSessionId = data && data.userSessionId;
     let lastCount = 0;
-    
+    // const msg = "Hola! Soy Mitra, en que puedo ayudarte?";
+    // liveChat.ddp.call('addIncomingMsg', msg, clientAppId, userSessionId);
+    // liveChat.ddp.call('addIncomingMsg', msg, 'Tmm68iQqvvziMJ2p4', userSessionId);
+    // console.log("livechatbox rendered % y sesion %", msg, userSessionId);
     tmpl.autorun(() => {
         if (liveChat.messages.count()) {
 
@@ -69,5 +72,8 @@ Template.liveChatBox.helpers({
     liveChatMessages() {
         const instance = Template.instance();
         return instance.liveChatMessages.get();
+    },
+    isClient(msg) {
+     return (msg.origin=="bot")?false:true;
     }
 });
