@@ -3,8 +3,9 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { liveChat } from 'meteor/live-chat-meteor-client';
 
 import './main.html';
+// import './charts.js'
 // import './css/custom.css';
-CLIENT_APP_ID = 'Tmm68iQqvvziMJ2p4';
-liveChat.init(CLIENT_APP_ID);
+liveChat.init('iWZYqELkHENCz76Sb');
 
-console.log('livechat', liveChat.userSessionId);
+console.log('userSessionId', liveChat.userSessionId);
+console.log('clientAppId', liveChat.clientAppId);
