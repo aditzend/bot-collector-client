@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0",
+    "moment": "^2.22.2",
     "node-chartist": "^1.0.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
