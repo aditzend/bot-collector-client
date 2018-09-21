@@ -4,8 +4,10 @@ import { liveChat } from 'meteor/live-chat-meteor-client';
 import React from 'react'
 import { render } from 'react-dom'
 
+
+
 import './main.html';
-// import './charts.js'
+import './charts.js'
 // import './css/custom.css';
 liveChat.init('iWZYqELkHENCz76Sb');
 

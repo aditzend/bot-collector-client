@@ -8,8 +8,12 @@ import {
     liveChat
 } from 'meteor/live-chat-meteor-client';
 
-// import Chartist from  'meteor/mfpierre:chartist-js'
+import React from 'react'
+import {render} from 'react-dom'
 
+
+// import Chartist from  'meteor/mfpierre:chartist-js'
+import Chart from './Chart.js'
 import './charts.html'
 
 // import co from 'co'
@@ -17,6 +21,10 @@ import './charts.html'
 
 
 // import {generate} from 'node-chartist'
+
+Meteor.startup(() => {
+    render(<Chart /> , document.getElementById('react-chart-target'))
+})
 
 Template.Charts.onCreated(function() {
     this.expenses = new ReactiveVar(null)
@@ -43,6 +51,9 @@ Template.Charts.onRendered(function() {
 })
 
 Template.Charts.helpers({
+    Chart() {
+        return <h1>hola</h1>
+    },
     expenses() {
         const instance = Template.instance()
         return instance.expenses.get()

@@ -22,3 +22,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 live-chat-meteor-client
 simple:rest
 mfpierre:chartist-js
+react-template-helper
+react-meteor-data
