@@ -7,7 +7,8 @@ import { LineChart,
         Area,
         PieChart,
         Pie,
-        Legend
+        Legend,
+        Cell
      } from 'recharts'
 import { withTracker } from 'meteor/react-meteor-data'
 import {
@@ -65,9 +66,13 @@ class Chart extends Component {
                 </AreaChart>
                 <h3>Gastos por concepto</h3>
                 <PieChart width={730} height={250}>
-                    <Pie data={this.props.sum} dataKey="cost" nameKey="concept" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
-                    <Legend />
-                    <Tooltip />
+                    <Pie data={this.props.sum} dataKey="cost" nameKey="concept" cx="50%" cy="50%" outerRadius={50} label>
+                        {
+                            data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={this.props.colors[index]} />
+                            ))
+                        }
+                    </Pie>
                 </PieChart>
             </div>
         )
@@ -77,11 +82,12 @@ class Chart extends Component {
 export default withTracker(() => {
     let agg = {Gimnasio:0, Super:0}
     liveChat.expenses.forEach( (e) => {
-        agg[e.concept]++
+        agg[e.concept] = agg[e.concept] + e.cost
     }
 
     )
     return {
+        colors: ["#8884d8", "#82ca9d"],
         expenses: liveChat.expenses.map( function(e) {
             return {
                 cost: e.cost,
