@@ -7,8 +7,10 @@ import { LineChart,
         Area,
         PieChart,
         Pie,
+        Sector,
         Legend,
-        Cell
+        Cell,
+        Label
      } from 'recharts'
 import { withTracker } from 'meteor/react-meteor-data'
 import {
@@ -73,6 +75,7 @@ class Chart extends Component {
                             ))
                         }
                     </Pie>
+                    <Label position="top" />
                 </PieChart>
             </div>
         )
