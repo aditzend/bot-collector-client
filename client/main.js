@@ -15,5 +15,5 @@ console.log('userSessionId', liveChat.userSessionId);
 console.log('clientAppId', liveChat.clientAppId);
 
 Meteor.startup( () => {
-    render(<h1>hello react</h1>, document.getElementById('react-container'))
+    // render(<h1>hello react</h1>, document.getElementById('react-container'))
 })
