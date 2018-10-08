@@ -27,13 +27,13 @@ Meteor.startup(() => {
 })
 
 Template.Charts.onCreated(function() {
-    this.expenses = new ReactiveVar(null)
+    this.reservations = new ReactiveVar(null)
 })
 
 Template.Charts.onRendered(function() {
     const tmpl = this
     tmpl.autorun( () => {
-        tmpl.expenses.set(liveChat.expenses)
+        tmpl.reservations.set(liveChat.reservations)
     })
     //chartist
         // co(function * () {
@@ -54,8 +54,8 @@ Template.Charts.helpers({
     Chart() {
         return <h1>hola</h1>
     },
-    expenses() {
+    reservations() {
         const instance = Template.instance()
-        return instance.expenses.get()
+        return instance.reservations.get()
     }
 })

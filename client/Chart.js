@@ -23,17 +23,17 @@ import Tooltip from 'recharts/lib/component/Tooltip';
 import { emit } from 'cluster';
 
 class Chart extends Component {
-    getExpenses() {
-        return [
-            {_id:1, concept: 'super', cost:100},
-            {_id:2, concept: 'super', cost:200},
-            {_id:3, concept: 'super', cost:300},
-        ]
-    }
+    // getExpenses() {
+    //     return [
+    //         {_id:1, concept: 'super', cost:100},
+    //         {_id:2, concept: 'super', cost:200},
+    //         {_id:3, concept: 'super', cost:300},
+    //     ]
+    // }
    
     renderExpenses() {
-        return this.props.expenses.map( (expense) => (
-            <li>{expense.concept} || {expense.cost}</li>
+        return this.props.reservations.map( (r) => (
+            <li>{r.city} || {r.pax}</li>
         ))
     }
 
@@ -48,7 +48,7 @@ class Chart extends Component {
        
         return(
             <div>
-                <AreaChart width={730} height={250} data={this.props.expenses}>
+                {/* <AreaChart width={730} height={250} data={this.props.reservations}>
                     <defs>
                         <linearGradient id="colorUser1" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -65,10 +65,21 @@ class Chart extends Component {
                     <Tooltip />
                     <Area type="monotone" dataKey="cost" stroke="#8884d8" fillOpacity={1} fill="url(#colorUser1)" />
                     <Area type="monotone" dataKey="double" stroke="#82ca9d" fillOpacity={1} fill="url(#colorUser2)" />
-                </AreaChart>
-                <h3>Gastos por concepto</h3>
+                </AreaChart> */}
+                <h3>Pasajeros por ciudad</h3>
                 <PieChart width={730} height={250}>
-                    <Pie data={this.props.sum} dataKey="cost" nameKey="concept" cx="50%" cy="50%" outerRadius={50} label>
+                    <Pie data={this.props.sum} dataKey="pax" nameKey="city" cx="50%" cy="50%" outerRadius={50} label>
+                        {
+                            data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={this.props.colors[index]} />
+                            ))
+                        }
+                    </Pie>
+                    <Label position="top" />
+                </PieChart>
+                <h3>Reservas por ciudad</h3>
+                <PieChart width={730} height={250}>
+                    <Pie data={this.props.nights} dataKey="nights" nameKey="city" cx="50%" cy="50%" outerRadius={50} label>
                         {
                             data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={this.props.colors[index]} />
@@ -83,25 +94,30 @@ class Chart extends Component {
 }
 
 export default withTracker(() => {
-    let agg = {Gimnasio:0, Super:0}
-    liveChat.expenses.forEach( (e) => {
-        agg[e.concept] = agg[e.concept] + e.cost
+    let agg = {Madrid:0, Barcelona:0}
+    let nights = { Madrid: 0, Barcelona: 0 }
+
+    liveChat.reservations.forEach( (reservation) => {
+        agg[reservation.city] = agg[reservation.city] + reservation.pax
+        nights[reservation.city] = nights[reservation.city] + reservation.nights
     }
+  
 
     )
     return {
         colors: ["#8884d8", "#82ca9d"],
-        expenses: liveChat.expenses.map( function(e) {
+        reservations: liveChat.reservations.map( function(r) {
             return {
-                cost: e.cost,
-                double: e.cost * 2,
-                concept: e.concept,
-                date: moment(e.date).format("HH:mm")
+                city: r.city,
             }
         }),
         sum: [
-            { concept: "Gimnasio", cost: agg["Gimnasio"]},
-            { concept: "Super", cost: agg["Super"]},
+            { city: "Madrid", pax: agg["Madrid"]},
+            { city: "Barcelona", pax: agg["Barcelona"]},
+        ],
+        nights: [
+            { city: "Madrid", nights: 30 },
+            { city: "Barcelona", nights: 90 },
         ]
           
         
