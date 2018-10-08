@@ -8,6 +8,7 @@ import { render } from 'react-dom'
 
 import './main.html';
 import './charts.js'
+import './last5bookings'
 // import './css/custom.css';
 liveChat.init('iWZYqELkHENCz76Sb');
 

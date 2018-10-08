@@ -1,11 +1,29 @@
 <head>
     <!-- meta -->
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mit Hotel</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./Favicon.png">
     
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
     
-    <!-- Uncomment the meta tags you are going to use! Be relevant and don't spam! -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+
+
+
+
+
+    <!-- legacy -->
     
     <meta name="keywords" content="premium html template, unique premium template, multipurpose template" />
     <meta name="description" content="Kallyas is an ultra-premium, responsive theme built for todays websites. Create your website, fast.">
@@ -22,18 +40,136 @@
       <!-- Custom CSS Stylesheet (where you should add your own css rules) -->
       <link rel="stylesheet" href="css/custom.css" type="text/css" />
     <!-- Title -->
-    <title>Mitra </title>
-  <title>Mitra</title>
+    <title>Mit Hotel </title>
+  <title>Mit Hotel</title>
 </head>
 
 <body>
-  <div style="margin-top=10%;">
-    <h1>Mit Hotel - Panel de Control de Reservas</h1>
-    {{> Charts}}
-    <!-- <img src="https://mitrol.net/sites/default/files/logo_mit_0.png" class="logo-img" alt="Mitra" width="30px"> -->
+  <!-- <div style="margin-top=10%;"> -->
+    <!-- <h1>Mit Hotel - Panel de Control de Reservas</h1> -->
+    <!-- {{> Charts}} -->
+    <!-- <img src="https://mitrol.net/sites/default/files/logo_mit_0.png" class="logo-img" alt="Mit Hotel" width="30px"> -->
+  <!-- </div> -->
+  <!-- Header Start -->
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- header Nav Start -->
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button> -->
+                <a class="navbar-brand" href="index.html">
+                  <img src="./Logo-04.png" style="max-width:10%;" class="responsive" alt="Logo">
+                </a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="index.html">Home</a></li>
+                  <!-- <li><a href="about.html">Quiénes Somos</a></li>
+                      <li><a href="servicios.html">Servicios</a></li>
+                      <li><a href="work-us.html">Trabajá con Nosotros</a></li>
+                      <li><a href="contacto.html">Contacto</a></li> -->
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header><!-- header close -->
+  
+  <!-- Slider Start -->
+  <section id="slider">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-2">
+          <div class="block">
+            <h1 class="animated fadeInUp">BIENVENIDOS A MIT HOTEL</h1>
+            <h2 class="animated fadeInUp">Chatbot en tu hotel:
+              Servicio personalizado para tus huéspedes 24h/7</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="container">
+    <div class="row">
+      <div class="section-title">
+        <h2> AUTOGESTIÓN ONLINE DE RESERVAS EN TAN SOLO 3 PREGUNTAS</h2>
+        <h3>BENEFICIOS:</h3>
+  
+        <ol style="    font-weight: 800;
+      font-size: 20px;">
+          <li>Autogestión de reservas 24x7</li>
+          <li>Ahorro tiempo y recursos destinados a la reserva de alojamientos</li>
+          <li>Visualice de forma gráfica y ágil las reservas en curso</li>
+        </ol>
+      </div>
+    </div>
   </div>
   
+  
+  <!-- Wrapper Start -->
+  <section id="intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-12">
+          <div class="block">
+            <div class="section-title">
+              <h2>PROCESO DE RESERVAS</h2>
+              <h3>1. El usuario gestiona su reserva a través del chat, indicando ciudad a la que desea viajar, cantidad
+                de pasajeros, la fecha de llegada y la duración de su estadía. Aquí se muestran las 5 últimas reservas tal como las interpreta el bot.</h3>
+              {{>Last5Bookings}}
+              <!-- <img src="img/wrapper-img.gif" alt="Img"> -->
+            </div>
+  
+          </div>
+        </div><!-- .col-md-7 close -->
+        <div class="col-md-5 col-sm-12">
+          <div class="block">
+            <div class="section-title">
+              <h2>TABLERO DE CONTROL</h2>
+              <h3>2. Una vez finalizada la reserva, el tablero de control se actualiza automáticamente, mostrando las
+                reservas confirmadas.</h3>
+              <div class="chart-container">{{>Charts}}</div>
+              <!-- <img src="img/wrapper-img.gif" alt="Img"> -->
+            </div>
+          </div>
+        </div><!-- .col-md-5 close -->
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- footer Start -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="footer-manu">
+            <ul>
+              <li><a href="home.html">Home</a></li>
+              <!-- <li><a href="about.html">Quiénes Somos</a></li>
+                  <li><a href="servicios.html">Servicios</a></li>
+                  <li><a href="contacto.html">Contacto</a></li> -->
+            </ul>
+          </div>
+          <p>Copyright &copy; Mitrol 2018</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
  {{> liveChatBox}}
-  <!-- end page wrapper -->
-  <!-- {{> liveChatBox}} -->
+
 </body>

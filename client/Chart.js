@@ -77,7 +77,7 @@ class Chart extends Component {
                     </Pie>
                     <Label position="top" />
                 </PieChart>
-                <h3>Reservas por ciudad</h3>
+                {/* <h3>Reservas por ciudad</h3>
                 <PieChart width={730} height={250}>
                     <Pie data={this.props.nights} dataKey="nights" nameKey="city" cx="50%" cy="50%" outerRadius={50} label>
                         {
@@ -87,7 +87,7 @@ class Chart extends Component {
                         }
                     </Pie>
                     <Label position="top" />
-                </PieChart>
+                </PieChart> */}
             </div>
         )
     }

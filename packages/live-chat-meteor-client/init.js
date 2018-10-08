@@ -2,8 +2,8 @@ liveChat = {
     init(clientAppId) {
         let self = this;
         // const endpoint = 'https://tramites-ctp-cm.herokuapp.com';
-        // const endpoint = 'localhost:4000';
-        const endpoint = 'https://mitrol-bot-hotel-spain-manager.herokuapp.com';
+        const endpoint = 'localhost:4000';
+        // const endpoint = 'https://mitrol-bot-hotel-spain-manager.herokuapp.com';
         // const endpoint = 'https://e42cf191.ngrok.io';
         // const endpoint = 'https://sing4host.herokuapp.com';
         this.userSessionId = Random.id();
