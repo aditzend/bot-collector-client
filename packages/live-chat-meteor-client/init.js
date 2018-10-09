@@ -2,8 +2,8 @@ liveChat = {
     init(clientAppId) {
         let self = this;
         // const endpoint = 'https://tramites-ctp-cm.herokuapp.com';
-        const endpoint = 'localhost:4000';
-        // const endpoint = 'https://mitrol-bot-hotel-spain-manager.herokuapp.com';
+        // const endpoint = 'localhost:4000';
+        const endpoint = 'https://mitrol-bot-hotel-spain-manager.herokuapp.com';
         // const endpoint = 'https://e42cf191.ngrok.io';
         // const endpoint = 'https://sing4host.herokuapp.com';
         this.userSessionId = Random.id();
@@ -19,6 +19,7 @@ liveChat = {
         this.messages = this.chatCollection.find({userSessionId: this.userSessionId}, {sort: {date: 1}});
         this.expenses = this.expensesCollection.find({}, {sort: {date: -1}})
         this.reservations = this.reservationsCollection.find({}, {})
+        this.top5reservations = this.reservationsCollection.find({}, {limit:3, sort: {createdAt: -1}})
         this.connection = {};
     }
 };

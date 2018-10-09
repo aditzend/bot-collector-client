@@ -22,6 +22,10 @@ import moment from 'moment'
 import Tooltip from 'recharts/lib/component/Tooltip';
 import { emit } from 'cluster';
 
+const _ = require('lodash')
+
+
+
 class Chart extends Component {
     // getExpenses() {
     //     return [
@@ -40,46 +44,37 @@ class Chart extends Component {
   
 
     render() {
-        const data = [
-            {name: 'a', cost:3000},
-            {name: 'b', cost:2000},
-            {name: 'c', cost:1000},
-        ]
+    
        
         return(
             <div>
-                {/* <AreaChart width={730} height={250} data={this.props.reservations}>
+
+
+
+             <AreaChart width={730} height={250} data={this.props.pps}>
                     <defs>
                         <linearGradient id="colorUser1" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                            <stop offset="5%" stopColor={this.props.colors[0]} stopOpacity={0.8} />
+                            <stop offset="95%" stopColor={this.props.colors[0]} stopOpacity={0} />
                         </linearGradient>
                         <linearGradient id="colorUser2" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                         <stop offset="5%" stopColor={this.props.colors[1]} stopOpacity={0.8} />
+                            <stop offset="95%" stopColor={this.props.colors[1]} stopOpacity={0} />
                         </linearGradient>
                     </defs>
-                    <XAxis dataKey="date" />
-                    <YAxis />
-                    <CartesianGrid strokeDashArray="9 9" />
-                    <Tooltip />
-                    <Area type="monotone" dataKey="cost" stroke="#8884d8" fillOpacity={1} fill="url(#colorUser1)" />
-                    <Area type="monotone" dataKey="double" stroke="#82ca9d" fillOpacity={1} fill="url(#colorUser2)" />
-                </AreaChart> */}
-                <h3>Pasajeros por ciudad</h3>
+                 <XAxis dataKey="checkIn" />
+                 <YAxis />
+                 <CartesianGrid strokeDashArray="9 9" />
+                 <Tooltip />
+                    <Area type="monotone" dataKey="paxBarcelona" stroke={this.props.colors[0]} fillOpacity={1} fill="url(#colorUser1)" />
+                 <Area type="monotone" dataKey="paxMadrid" stroke={this.props.colors[1]} fillOpacity={1} fill="url(#colorUser2)" />
+             </AreaChart>
+
+
+
+                {/* <h3>Pasajeros por ciudad</h3>
                 <PieChart width={730} height={250}>
-                    <Pie data={this.props.sum} dataKey="pax" nameKey="city" cx="50%" cy="50%" outerRadius={50} label>
-                        {
-                            data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={this.props.colors[index]} />
-                            ))
-                        }
-                    </Pie>
-                    <Label position="top" />
-                </PieChart>
-                {/* <h3>Reservas por ciudad</h3>
-                <PieChart width={730} height={250}>
-                    <Pie data={this.props.nights} dataKey="nights" nameKey="city" cx="50%" cy="50%" outerRadius={50} label>
+                    <Pie data={this.props.nightsPerSede} dataKey="pax" nameKey="sede" cx="50%" cy="50%" outerRadius={50} label>
                         {
                             data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={this.props.colors[index]} />
@@ -88,6 +83,17 @@ class Chart extends Component {
                     </Pie>
                     <Label position="top" />
                 </PieChart> */}
+                <h3>Reservas por ciudad</h3>
+                <PieChart width={730} height={250}>
+                    <Pie data={this.props.nightsPerSede} dataKey="nights" nameKey="sede" cx="50%" cy="50%" outerRadius={50} label>
+                        {
+                            this.props.nightsPerSede.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={this.props.colors[index]} />
+                            ))
+                        }
+                    </Pie>
+                    <Label position="top" />
+                </PieChart>
             </div>
         )
     }
@@ -96,30 +102,58 @@ class Chart extends Component {
 export default withTracker(() => {
     let agg = {Madrid:0, Barcelona:0}
     let nights = { Madrid: 0, Barcelona: 0 }
+    let madrid = 10
+    let barcelona = 20
+    let x = 21
+    let pps = [{}]
 
     liveChat.reservations.forEach( (reservation) => {
-        agg[reservation.city] = agg[reservation.city] + reservation.pax
-        nights[reservation.city] = nights[reservation.city] + reservation.nights
+
+        let  i = _.findIndex(pps, r => r.checkIn === reservation.checkIn)
+        if (i < 0) { 
+            pps.push({checkIn: reservation.checkIn, paxMadrid: 0 , paxBarcelona: 0})
+            i = pps.length - 1
+        } 
+        const nights = Number(reservation.nights) || 0
+        if (reservation.sede === "Madrid") {
+            const oldPax = pps[i].paxMadrid
+            pps[i].paxMadrid = oldPax + reservation.pax
+            madrid = madrid + nights
+        } else {
+            const oldPax = pps[i].paxBarcelona
+            pps[i].paxBarcelona = oldPax + reservation.pax
+            barcelona = barcelona + nights
+
+        }
+       
     }
   
 
     )
     return {
-        colors: ["#8884d8", "#82ca9d"],
+        colors: ["#b31a1f", "#727272"],
         reservations: liveChat.reservations.map( function(r) {
             return {
-                city: r.city,
+                givenName: r.givenName,
+                pax: r.pax,
+                checkIn: r.checkIn,
+                nights: r.nights,
+                sede: r.sede,
             }
         }),
         sum: [
-            { city: "Madrid", pax: agg["Madrid"]},
-            { city: "Barcelona", pax: agg["Barcelona"]},
+            { sede: "Madrid", pax: 2},
+            { sede: "Barcelona", pax: 3},
         ],
-        nights: [
-            { city: "Madrid", nights: 30 },
-            { city: "Barcelona", nights: 90 },
-        ]
-          
+        nightsPerSede: [
+            { sede: "Madrid", nights: 23 },
+            { sede: "Barcelona", nights: x },
+        ],
+        nightsPerSede: [
+            { sede: "Madrid", nights: madrid },
+            { sede: "Barcelona", nights: barcelona },
+        ],
+        pps:pps,
         
     }
 }) (Chart)
