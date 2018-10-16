@@ -1,0 +1,12 @@
+<template name="Last5Applications">
+    {{#each application in applications}}
+    <p>Nombre: {{application.givenName}} <br>
+        Monto: {{application.amount}} <br>
+    Antigüedad: {{application.seniority.amount}} [{{application.seniority.unit}}]<br>
+    Rango Salarial: {{rangeTranslator application.payGrade}}<br>
+Sucursal: {{application.branch}} <br>
+    Cr&eacute;dito: {{status application}}</p>
+    <hr>
+
+    {{/each}}
+</template>

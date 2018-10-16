@@ -4,25 +4,25 @@
     <div id="live-chat-box" class="live-chat-box js-chat-box">
         <div id="live-chat-box-header" class="live-chat-box-header js-chat-box-close">
             <div class="live-chat-header-title">
-                            <img src="https://mitrol.net/sites/default/files/logo_mit_0.png" class="logo-img" alt="Mit Hotel" width="30px">
+                            <img src="https://mitrol.net/sites/default/files/logo_mit_0.png" class="logo-img" alt="Mit" width="30px">
             </div>
         </div>
         <div style="overflow:auto" id="live-chat-messages" class="live-chat-messages js-chat-messages">
-            <h5>Mit Hotel</h5>
+            <h5>Mit Credit</h5>
             <div class="live-chat-message-item">
-                <div class="message" id="msg-1">Le damos la bienvenida al sistema de reservas de Mit Hotel. ¿Cuál es su nombre?</div>
+                <div class="message" id="msg-1">Le damos la bienvenida al sistema de otorgamiento de Mit Credit. ¿Cuál es su nombre?</div>
             </div>
             {{#each m in liveChatMessages}}
                 {{#if isClient m}}
                     <div class="live-chat-message-item live-chat-message-item-client">
-                        <div class="message" id="msg-1">{{m.msg}}</div>
+                        <div class="message" id="msg-1">{{{m.msg}}}</div>
                     </div>
                 {{else}}
                     <!-- <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32"> -->
                         <!-- <span class="chat-time">{{m.date}}</span> -->
-                        <h5>Mit Hotel</h5>
+                        <h5>Mit Credit</h5>
                         <div class="live-chat-message-item">
-                            <div class="message" id="msg-1">{{m.msg}}</div>
+                            <div class="message" id="msg-1">{{{m.msg}}}</div>
                         </div>
                 <!-- end chat-message -->
                 {{/if}}
@@ -41,7 +41,7 @@
     
             <!-- <a href="#" class="chat-close">x</a> -->
     
-            <h4>Mit Hotel</h4>
+            <h4>Mit Credit</h4>
     
             <!-- <span class="chat-message-counter">3</span> -->
     
