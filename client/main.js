@@ -10,7 +10,7 @@ import './main.html';
 import './charts.js'
 import './last5applications'
 // import './css/custom.css';
-liveChat.init('PwRw2vT6TzMKM4Z5p');
+liveChat.init('QdCJt5C2hFa4N6oQs');
 
 console.log('userSessionId', liveChat.userSessionId);
 console.log('clientAppId', liveChat.clientAppId);
