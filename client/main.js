@@ -7,10 +7,10 @@ import { render } from 'react-dom'
 
 
 import './main.html';
-import './charts.js'
+// import './charts.js'
 import './last5applications'
 // import './css/custom.css';
-liveChat.init('QdCJt5C2hFa4N6oQs');
+liveChat.init(Meteor.settings.public.client_app_id);
 
 console.log('userSessionId', liveChat.userSessionId);
 console.log('clientAppId', liveChat.clientAppId);

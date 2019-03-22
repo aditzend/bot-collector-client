@@ -1,7 +1,8 @@
 liveChat = {
     init(clientAppId) {
         let self = this;
-        const endpoint = 'https://mitcredit-manager.herokuapp.com';
+        const endpoint = Meteor.settings.public.endpoint
+        // const endpoint = 'https://mitcredit-manager.herokuapp.com';
         // const endpoint = 'localhost:4000'
         // const endpoint = 'https://e42cf191.ngrok.io';
         // const endpoint = 'https://sing4host.herokuapp.com';
